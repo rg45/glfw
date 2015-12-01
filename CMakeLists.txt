@@ -36,12 +36,6 @@ if (WIN32)
     option(GLFW_USE_HYBRID_HPG "Force use of high-performance GPU on hybrid systems" OFF)
 endif()
 
-if (APPLE)
-    option(GLFW_USE_CHDIR "Make glfwInit chdir to Contents/Resources" ON)
-    option(GLFW_USE_MENUBAR "Populate the menu bar on first window creation" ON)
-    option(GLFW_USE_RETINA "Use the full resolution of Retina displays" ON)
-endif()
-
 if (UNIX AND NOT APPLE)
     option(GLFW_USE_WAYLAND "Use Wayland for window creation" OFF)
     option(GLFW_USE_MIR     "Use Mir for window creation" OFF)
@@ -335,18 +329,6 @@ endif()
 # Use Cocoa for window creation and NSOpenGL for context creation
 #--------------------------------------------------------------------
 if (_GLFW_COCOA)
-
-    if (GLFW_USE_MENUBAR)
-        set(_GLFW_USE_MENUBAR 1)
-    endif()
-
-    if (GLFW_USE_CHDIR)
-        set(_GLFW_USE_CHDIR 1)
-    endif()
-
-    if (GLFW_USE_RETINA)
-        set(_GLFW_USE_RETINA 1)
-    endif()
 
     list(APPEND glfw_LIBRARIES
         "-framework Cocoa"

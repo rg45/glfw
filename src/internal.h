@@ -50,6 +50,7 @@
 
 typedef int GLFWbool;
 
+typedef struct _GLFWinithints   _GLFWinithints;
 typedef struct _GLFWwndconfig   _GLFWwndconfig;
 typedef struct _GLFWctxconfig   _GLFWctxconfig;
 typedef struct _GLFWfbconfig    _GLFWfbconfig;
@@ -246,6 +247,15 @@ typedef void (APIENTRY * PFN_vkVoidFunction)(void);
 // Platform-independent structures
 //========================================================================
 
+/*! @brief Init hints.
+ */
+struct _GLFWinithints
+{
+    GLFWbool      menubar;
+    GLFWbool      chdir;
+    GLFWbool      retina;
+};
+
 /*! @brief Window configuration.
  *
  *  Parameters relating to the creation of the window but not directly related
@@ -441,6 +451,8 @@ struct _GLFWlibrary
         _GLFWctxconfig  context;
         int             refreshRate;
     } hints;
+
+    _GLFWinithints      init;
 
     _GLFWcursor*        cursorListHead;
 
